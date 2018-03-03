@@ -1,0 +1,28 @@
+{
+  "name": "carbon-xv",
+  "version": "1.0.0",
+  "description": "Class service management",
+  "main": "carbon-xv.js",
+  "scripts": {
+    "test": "mocha",
+    "pre-commit": "echo 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:danielc2013/carbon-xv"
+  },
+  "keywords": [
+    "classes"
+  ],
+  "author": "Daniel Casias",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^3.10.0"
+  },
+  "devDependencies": {
+    "documentation": "^5.5.0",
+    "eslint": "^4.18.2",
+    "jasmine": "^3.0.0",
+    "mocha": "^5.0.1"
+  }
+}

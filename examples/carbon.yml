@@ -1,0 +1,43 @@
+version: 1
+events:
+  - create
+  - update
+  - delete
+  - read
+  - returnClass
+classes:
+  organization:
+    fields:
+      name: 'string'
+      id: 'string'
+      admin: '$admin:id'
+      groups: 'array:$group'
+      policies: 'array:$policy'
+      users: 'array:$user'
+    required:
+      create:
+        - name
+        - admin
+      update:
+        - id
+      delete:
+        - id
+      read:
+        - id
+  admin:
+    fields:
+      id: '$user:id'
+  user:
+    fields:
+      id: 'string'
+      name: 'string'
+    required:
+      create:
+        - id
+        - name
+      returnClass:
+        - name
+        - email
+        - id
+      update:
+        - id    

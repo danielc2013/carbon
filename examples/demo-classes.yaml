@@ -1,0 +1,10 @@
+version: 1
+events:
+  - demo
+classes:
+  fakeclass:
+    fields:
+      id: 'string'
+    required:
+      demo:
+        - id
