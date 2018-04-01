@@ -4,7 +4,7 @@
   "description": "Class service management",
   "main": "carbon-xv.js",
   "scripts": {
-    "test": "mocha",
+    "test": "echo 'No Mocha Tests Written'",
     "pre-commit": "echo 1"
   },
   "repository": {
