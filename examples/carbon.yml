@@ -4,6 +4,7 @@ events:
   - update
   - delete
   - read
+  - testHidden
   - returnClass
 classes:
   organization:
@@ -24,6 +25,12 @@ classes:
         - id
       read:
         - id
+      testHidden:
+        - name
+        - id
+    hidden:
+      testHidden:
+        - name
   admin:
     fields:
       id: '$user:id'
