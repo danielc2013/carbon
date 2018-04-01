@@ -2,11 +2,6 @@
  * @todo If there are no required fields, the event emitters will fail
  * This is not a good way to manage the dependency. In later iteration,
  * remove the strong tie to required fields and provide custom fields
- * @todo make sure that required fields actually exist in the fields of 
- * the class definition yaml object
- * @todo Add an events field to the yaml definition file. This will make
- * the utility extensible above CRUD operations
- * @todo Procedurally add required fields 
  */
 const yaml = require('js-yaml')
 const fs   = require('fs')
