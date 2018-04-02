@@ -2,11 +2,6 @@
  * @todo If there are no required fields, the event emitters will fail
  * This is not a good way to manage the dependency. In later iteration,
  * remove the strong tie to required fields and provide custom fields
- * @todo make sure that required fields actually exist in the fields of 
- * the class definition yaml object
- * @todo Add an events field to the yaml definition file. This will make
- * the utility extensible above CRUD operations
- * @todo Procedurally add required fields 
  */
 const yaml = require('js-yaml')
 const fs   = require('fs')
@@ -56,6 +51,7 @@ module.exports = (ymlSrc) => {
             return new ModuleClass({
                 name: cls,
                 requiredFields: classes[cls].required,
+                hiddenFields: classes[cls].hidden,
                 fieldTypes: classes[cls].fields
             })
         }
@@ -68,6 +64,7 @@ function ModuleClass (args) {
     if(!(this instanceof ModuleClass))
         return new ModuleClass(args)
     let requiredFields = args.requiredFields
+    let hiddenFields = args.hiddenFields
     let fieldsTypes = args.fieldTypes
 
     let fieldValues = {}
@@ -94,6 +91,7 @@ function ModuleClass (args) {
         if (!events.includes(event))
             throw new Error(`Undefined event ${event} in class ${args.name}`)
 
+        // TODO: This may have unwanted results
         if(!requiredFields[event])
             return fieldValues
 
@@ -103,7 +101,7 @@ function ModuleClass (args) {
                 `${requiredFields[event][field]} in ${event} call`)
         }
 
-        return fieldValues
+        return dropHidden(fieldValues, hiddenFields[event])
     }
 
     let rtrn = {
@@ -153,4 +151,11 @@ function validateChain(str){
         else
             return true
     });
+}
+
+function dropHidden(fields, hiddenFields){
+    let finalSet = JSON.parse(JSON.stringify(fields))
+    for(let key in hiddenFields)
+        delete finalSet[hiddenFields[key]]
+    return finalSet
 }
