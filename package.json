@@ -1,6 +1,6 @@
 {
   "name": "carbon-xv",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Class service management",
   "main": "carbon-xv.js",
   "scripts": {
