@@ -101,7 +101,10 @@ function ModuleClass (args) {
                 `${requiredFields[event][field]} in ${event} call`)
         }
 
-        return dropHidden(fieldValues, hiddenFields[event])
+        if(typeof hiddenFields[event] != 'undefined')
+          return dropHidden(fieldValues, hiddenFields[event])
+        else
+          return fieldValues
     }
 
     let rtrn = {
