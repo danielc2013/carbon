@@ -63,9 +63,9 @@ module.exports = (ymlSrc) => {
 function ModuleClass (args) {
     if(!(this instanceof ModuleClass))
         return new ModuleClass(args)
-    let requiredFields = args.requiredFields
-    let hiddenFields = args.hiddenFields
-    let fieldsTypes = args.fieldTypes
+    let requiredFields = args.requiredFields || {}
+    let hiddenFields = args.hiddenFields || {}
+    let fieldsTypes = args.fieldTypes || {}
 
     let fieldValues = {}
 
@@ -101,7 +101,7 @@ function ModuleClass (args) {
                 `${requiredFields[event][field]} in ${event} call`)
         }
 
-        if(typeof hiddenFields[event] != 'undefined')
+        if(even in hiddenFields)
           return dropHidden(fieldValues, hiddenFields[event])
         else
           return fieldValues
