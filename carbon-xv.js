@@ -101,7 +101,7 @@ function ModuleClass (args) {
                 `${requiredFields[event][field]} in ${event} call`)
         }
 
-        if(even in hiddenFields)
+        if(event in hiddenFields)
           return dropHidden(fieldValues, hiddenFields[event])
         else
           return fieldValues
